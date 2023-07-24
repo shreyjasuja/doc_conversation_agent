@@ -76,6 +76,10 @@ def main():
     user_question = st.text_input("Ask a question about your documents:")
     if user_question:
         handle_user_input(user_question)
+    
+    # print(st.session_state.chat_history)
+    print(st.session_state.conversation)
+
 
 
     with st.sidebar:
@@ -99,6 +103,9 @@ def main():
                 text_chunks = get_text_chunks(raw_text)
                 vectorstore = get_vectorstore(text_chunks)
                 st.session_state.conversation = get_conversation_chain(vectorstore)
+
+
+
 
 if __name__ == "__main__":
     main()
